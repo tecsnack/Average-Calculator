@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Durchschnittsberechnung</title>
+  <script>
+    // Funktion für den Durchschnitt
+    function berechneDurchschnitt(zahlenListe) {
+      if (zahlenListe.length === 0) {
+        return 0; // Um Division durch Null zu vermeiden
+      }
+      
+      const summe = zahlenListe.reduce((accumulator, current) => accumulator + current, 0);
+      const durchschnitt = summe / zahlenListe.length;
+      return durchschnitt;
+    }
+
+    // Funktion zum Anzeigen des Ergebnisses auf der Seite
+    function zeigeErgebnis() {
+      const eingabeElement = document.getElementById("zahlenEingabe");
+      const eingabeWert = eingabeElement.value;
+
+      const zahlenListe = eingabeWert.split(",").map(Number);
+      const durchschnittWert = berechneDurchschnitt(zahlenListe);
+      
+      const ergebnisContainer = document.getElementById("ergebnis");
+      ergebnisContainer.innerHTML = `Die Liste: [${zahlenListe.join(", ")}]<br>Der Durchschnitt: ${durchschnittWert}`;
+    }
+  </script>
+</head>
+<body>
+  <h1>Durchschnittsberechnung</h1>
+  <input type="text" id="zahlenEingabe" placeholder="Gib Zahlen durch Kommas getrennt ein">
+  <button onclick="zeigeErgebnis()">Berechne Durchschnitt</button>
+  <div id="ergebnis"></div>
+</body>
+</html>
