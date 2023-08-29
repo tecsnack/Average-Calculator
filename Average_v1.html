@@ -6,7 +6,7 @@
     // Funktion für den Durchschnitt
     function berechneDurchschnitt(zahlenListe) {
       if (zahlenListe.length === 0) {
-        return 0; // Um Division durch Null zu vermeiden
+        return 0; // Division without 0
       }
       
       const summe = zahlenListe.reduce((accumulator, current) => accumulator + current, 0);
@@ -14,15 +14,15 @@
       return durchschnitt;
     }
 
-    // Funktion zum Anzeigen des Ergebnisses auf der Seite
+    // function for field input 
     function zeigeErgebnis() {
-      const eingabeElement = document.getElementById("zahlenEingabe");
+      const eingabeElement = document.getElementById("Numbers");
       const eingabeWert = eingabeElement.value;
 
       const zahlenListe = eingabeWert.split(",").map(Number);
       const durchschnittWert = berechneDurchschnitt(zahlenListe);
       
-      const ergebnisContainer = document.getElementById("ergebnis");
+      const ergebnisContainer = document.getElementById("output");
       ergebnisContainer.innerHTML = `Die Liste: [${zahlenListe.join(", ")}]<br>Der Durchschnitt: ${durchschnittWert}`;
     }
   </script>
